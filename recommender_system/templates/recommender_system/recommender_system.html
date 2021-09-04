@@ -1,0 +1,75 @@
+{% extends 'landing/base.html' %}
+{% block content %}
+
+<section class="home-section ">
+    <div class="text mx-3 my-3" ><h1>Recommendation System</h1></div>
+  <div class="container" style="background-color: inherit;">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Percentage(Diploma)</label>
+          <input type="text" class="form-control" id="inputEmail4" placeholder="Enter your percentage">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputState">Seat-type</label>
+            <select id="inputState" class="form-control">
+              <option selected disabled >Select Location</option>
+              <option>OPEN</option>
+              <option>OBC</option>
+              <option>EWS</option>
+              <option>SC/ST</option>
+            </select>
+        </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="inputState">College Location</label>
+              <select id="inputState" class="form-control">
+                <option selected disabled >Select Location</option>
+                <option>Mumbai</option>
+                <option>Thane</option>
+                <option>Amravati</option>
+                <option>Nagpur</option>
+              </select>
+          </div>
+          <div class="form-group col-md-6">
+              <label for="inputState">University Name</label>
+              <select id="inputState" class="form-control">
+                <option selected disabled>Select University</option>
+                <option>Mumbai University</option>
+                <option>Pune University</option>
+                <option>Amravati University</option>
+                <option>Nagpur University</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="inputState">Courses</label>
+              <select id="inputState" class="form-control">
+                <option selected disabled>Select Courses</option>
+                <option>Computer Engineering</option>
+                <option>Information Technology Engineering</option>
+                <option>Mechanical Engineering</option>
+                <option>Civil Engineering</option>
+              </select>
+          </div>
+          <div class="form-group col-md-6">
+              <label for="inputState">Minority(if applicable)</label>
+              <select id="inputState" class="form-control">
+                <option selected disabled >Select Minority Type</option>
+                <option>Christan</option>
+                <option>Muslim</option>
+                <option>Parsi</option>
+                <option>Sindi</option>
+              </select>
+          </div>
+      </div> 
+      
+      <center><button type="submit" class="btn btn-primary">Generate List</button></center>
+      
+    </form>
+  </div>
+</section>
+{%endblock content%}

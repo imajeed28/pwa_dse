@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="font-family: 'Open Sans', sans-serif;">
+  <div class="container-fluid">
+        
+    <a class="navbar-brand"
+      {% if user.is_authenticated %}
+        href="{% url 'post_list' %}"
+      {% else %}
+        href="{% url 'index' %}" 
+      {% endif %}
+          style="letter-spacing: 0.2rem; font-family: 'Open Sans', sans-serif;"> 
+      <i class="fa fa-university"></i> DSE Finder
+    </a>
+        
+        
+
+    {% if user.is_authenticated %}
+          <div class="nav-item dropdown mr-5 d-flex">
+            
+            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
+            <ul class="dropdown-menu bg-outline-light">
+              <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
+            </ul>
+
+          </div>
+     {% else %}
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: larger;">
+              
+                <li class="nav-item ">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'recommender_system' %}">College Recommender </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Cutoff Predicitor</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">DSE Colleges</a>
+                </li>
+                
+            </ul>
+            
+              <a href="" class="btn btn-primary mr-2" style="margin-right: 1rem;">Log In</a>
+              <a href="" class="btn btn-outline-light">Register</a>
+              <!-- <button class="btn btn-primary" type="submit" style="margin-right: 1rem;">LOGIN</button>
+              <button class="btn btn-outline-light" type="submit">REGISTER</button> -->
+      
+    {% endif %}
+    </div>
+  </div>
+</nav>
