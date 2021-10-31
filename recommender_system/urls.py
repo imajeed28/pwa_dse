@@ -1,6 +1,9 @@
+from django import views
 from django.urls import path
-from .views import Recommender_system
+
+from recommender_system.views import searchresult
+from . import views
 
 urlpatterns = [
-    path('',Recommender_system.as_view(), name='recommender_system'),
-]
+    path('',views.searchresult, name='recommender_system'),
+]   

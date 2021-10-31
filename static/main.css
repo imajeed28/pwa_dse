@@ -1,0 +1,17 @@
+/* recommendation_system.html multiple select styling */
+.select2-selection__choice{
+    border:none!important;
+    border-radius: 4px!important;
+    background-color: rgba(0, 139, 139, 0.09) !important;
+}
+
+.select2-selection__choice__remove{
+    border: none!important;
+    border-radius: 0!important;
+    padding: 0 2px!important;
+}
+
+.select2-selection__choice__remove:hover{
+    background-color: transparent!important;
+    color: #ef5454 !important;
+} 

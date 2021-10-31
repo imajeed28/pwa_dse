@@ -1,75 +1,268 @@
 {% extends 'landing/base.html' %}
 {% block content %}
-
-<section class="home-section ">
-    <div class="text mx-3 my-3" ><h1>Recommendation System</h1></div>
+<style>
+  
+</style>
+<section class="home-section recommender">
+    <div class="text mx-3 my-3 text-dark" ><h1>College Recommender System</h1></div>
   <div class="container" style="background-color: inherit;">
-    <form>
+    <form method="POST">
+      {% csrf_token %}
       <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Percentage(Diploma)</label>
-          <input type="text" class="form-control" id="inputEmail4" placeholder="Enter your percentage">
-        </div>
+        <!-- <div class="form-group col-md-6">
+          <label for="inputEmail4">From Percentage(Diploma)</label>
+          <input type="text" class="form-control" id="inputEmail4" name="frompercentage" value="percentage"placeholder="Enter your percentage">
+          <label for="inputEmail4">To Percentage(Diploma)</label>
+          <input type="text" class="form-control" id="inputEmail4" name="topercentage" value="percentage" placeholder="Enter your percentage">
+        </div> -->
         <div class="form-group col-md-6">
             <label for="inputState">Seat-type</label>
-            <select id="inputState" class="form-control">
-              <option selected disabled >Select Location</option>
-              <option>OPEN</option>
-              <option>OBC</option>
-              <option>EWS</option>
-              <option>SC/ST</option>
+            <select id="inputState" name="category" class="form-control">
+              <option selected disabled >Select Seat-type</option>
+              <option value="OPEN">OPEN</option>
+              <option value="OBC">OBC</option>
+              <option value="EWS">EWS</option>
+              <option value="SC">SC/ST</option>
             </select>
         </div>
       </div>
+      <!-- <script>
+        function searchdata(){
+          var input,table,tr,td,filter,i,searchresult
+          input=document.getElementById("location");
+          filter=input.value.toUpperCase();
+          table-document.getElementById("recommendation");
+          tr=table.getElementsByTagName("tr");
+          for(i=0;i<tr.length;i++)
+          {
+            td=tr[i].getElementsByTagName("td")[5];
+            if(td)
+            {
+              searchresult=td.innertext;
+              if(searchresult.toUpperCase().indexOf(filter)>-1)
+              {
+                tr[i].style.display="";
+              }
+              else{
+                tr[i].style.display="none";
+              }
+            }
+          }
+        }
+      </script> -->
       <div class="form-row">
           <div class="form-group col-md-6">
               <label for="inputState">College Location</label>
-              <select id="inputState" class="form-control">
-                <option selected disabled >Select Location</option>
-                <option>Mumbai</option>
-                <option>Thane</option>
-                <option>Amravati</option>
-                <option>Nagpur</option>
+              <select id="location" name="college_location"  class="form-control " >
+                
+                <option value="Mumbai">Mumbai</option>
+                <option value="Thane">Thane</option>
+                <option value="Pune">Pune</option>
               </select>
           </div>
+
+          <!-- college status -->
           <div class="form-group col-md-6">
-              <label for="inputState">University Name</label>
-              <select id="inputState" class="form-control">
-                <option selected disabled>Select University</option>
-                <option>Mumbai University</option>
-                <option>Pune University</option>
-                <option>Amravati University</option>
-                <option>Nagpur University</option>
+              <label for="inputState">College Status</label>
+              <select id="inputState" name="status" class="form-control mul-select-status" multiple="true">
+                
+                <optgroup label="Government colleges" >
+                    <option value="">Government</option>
+                    <option value="">Government Autonomous</option>
+                    <option value="Government-Aided Autonomous">Government-Aided Autonomous</option>
+                </optgroup>
+                
+                <optgroup label="University Department/Managed Colleges">
+                    <option value="">University Department</option>
+                    <option value="">University Managed</option>
+                    <option value="">University Managed (Un-Aided)</option>
+                </optgroup>
+                
+                <optgroup label="Unaided Colleges">
+                    <option value="Un-Aided">Un-Aided</option>
+                    <option value="">Un-Aided Autonomous</option>
+                </optgroup>
+
+                <optgroup label="Unaided Linguistic Minority Colleges">
+                    <option value="">Un-Aided Linguistic Minority - Gujarathi(Jain)</option>
+                    <option value="">Un-Aided Linguistic Minority - Gujarathi </option>
+                    <option value="">Un-Aided Autonomous Linguistic Minority - Gujarathi </option>
+                    <option value="">Un-Aided Linguistic Minority - Hindi</option>
+                    <option value="">Un-Aided Linguistic Minority - Malyalam</option>
+                    <option value="">Un-Aided Linguistic Minority - Punjabi</option>
+                    <option value="">Un-Aided Linguistic Minority - Sindhi</option>
+                    <option value="">Un-Aided Linguistic Minority - Tamil</option>
+                </optgroup>
+                
+                <optgroup label="Unaided Religious Minority Colleges">
+                    <option value="">Un-Aided Religious Minority - Christian</option>
+                    <option value="">Un-Aided Religious Minority - Jain</option>
+                    <option value="">Un-Aided Religious Minority - Muslim</option>
+                </optgroup>
+
+                
+                
+                
+    
               </select>
           </div>
       </div>
-      
+      <!-- engineering courses -->
+
       <div class="form-row">
           <div class="form-group col-md-6">
               <label for="inputState">Courses</label>
-              <select id="inputState" class="form-control">
-                <option selected disabled>Select Courses</option>
-                <option>Computer Engineering</option>
-                <option>Information Technology Engineering</option>
-                <option>Mechanical Engineering</option>
-                <option>Civil Engineering</option>
+              <select id="course" name="course_name" class="form-control mul-select-courses" multiple="true">
+                 
+                <optgroup label="General Engineering Courses">
+                  <option value="Computer Engineering" >Computer Engineering</option>
+                  <option value="Computer Technology">Computer Technology</option>
+                  <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="">Electronics and Telecommunication Engg</option>
+                  <option value="">Electrical Engineering</option>
+                  <option value="">Mechanical Engineering</option>
+                  <option value="">Civil Engineering</option>
+                </optgroup>
+                
+                <optgroup label="101-Sub-group : A">
+                  <option value="">Chemical Engineering</option>
+                  <option value="">Chemical Technology</option>
+                </optgroup>
+
+                <optgroup label="102-Sub-group : B">
+                  <option value="">Plastic Technology</option>
+                </optgroup>
+
+                <optgroup label="103-Sub-group : C">
+                  <option value="">Food Technology</option>
+                </optgroup>
+
+                <optgroup label="104-Sub-group : D">
+                  <option value="">Surface Coating Technology</option>
+                  <option value="">Oil Technology</option>
+                  <option value="">Oil and Paints Technology</option>
+                </optgroup>
+
+                <optgroup label="201-Sub-group : A">
+                  <option value="">Civil Engineering</option>
+                </optgroup>
+
+                <optgroup label="301-Sub-group : A">
+                  <option value="">Computer Engineering</option>
+                  <option value="">Computer Technology</option>
+                  <option value="">Computer Science and Engineering</option>
+                  <option value="">Computer Science and Technology</option>
+                  <option value="">Information Technology</option>
+                </optgroup>
+
+                <optgroup label="302-Sub-group : B">
+                  <option value="">Electronics and Communication Engineering</option>
+                  <option value="">Electronics and Telecommunication Engg</option>
+                  <option value="">Electronics Engineering</option>
+                  <option value="">Electronics and Communication Technology</option>
+                  <option value="">Electrical Engineering</option>
+                  <option value="">Electrical Engg[Electronics and Power]</option>
+                  <option value="">Electrical And Electronics Engineering</option>
+                </optgroup>
+
+                <optgroup label="305-Sub-group : E">
+                  <option value="">Instrumentation Engineering</option>
+                  <option value="">Instrumentation and Control Engineering</option>
+                </optgroup>
+
+                <optgroup label="401-Sub-group : B">
+                  <option value="">Automobile Engineering</option>
+                  <option value="">Mechanical Engineering</option>
+                  <option value="">Mechatronics Engineering</option>
+                </optgroup>
+                <optgroup label="402-Sub-group : B">
+                  <option value="">Automobile Engineering</option>
+                  <option value="">Mechanical Engineering</option>
+                  <option value="">Mechatronics Engineering</option>
+                </optgroup>
+
+                <optgroup label="405-Sub-group : E">
+                  <option value="">Aeronautical Engineering</option>
+                </optgroup>
+
+                <optgroup label="501-Sub-group : A">
+                  <option value="">Mining Engineering</option>
+                </optgroup>
+
+                <optgroup label="701-Sub-group : A">
+                  <option value="">Man made Textile Technology</option>
+                </optgroup>
+
+                <optgroup label="702-Sub-group : B">
+                  <option value="">Textile Technology</option>
+                  <option value="">Textile Plant Engineering</option>
+                </optgroup>>
               </select>
           </div>
-          <div class="form-group col-md-6">
-              <label for="inputState">Minority(if applicable)</label>
-              <select id="inputState" class="form-control">
-                <option selected disabled >Select Minority Type</option>
-                <option>Christan</option>
-                <option>Muslim</option>
-                <option>Parsi</option>
-                <option>Sindi</option>
-              </select>
-          </div>
+          
       </div> 
       
-      <center><button type="submit" class="btn btn-primary">Generate List</button></center>
+      <center class="my-3"><input onclick="searchdata();" type="submit" value="Search"></center>
       
+      <table class="table" id="recommendation">
+        <thead>
+          <tr>
+            <th scope="col">College Code</th>
+            <th scope="col">College Name</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">College Location</th>
+            <th scope="col">Seat Type Alloted</th>
+            <th scope="col">Seat Type Intake</th>
+            <th scope="col">Status</th>
+            <th scope="col">Minority</th>
+            <th scope="col">Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in data %}
+          <tr>
+            <td>{{result.college_code}}</td>
+            <td>{{result.college_name}}</td>
+            <td>{{result.course_name}}</td>
+            <td>{{result.college_location}}</td>
+            <td>{{result.category}}</td>
+            <td>{{result.seat_type}}</td>
+            <td>{{result.status}}</td>
+            <td>{{result.minority}}</td>
+            <td>{{result.percentage}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
     </form>
   </div>
 </section>
+
+<script>
+  $(document).ready(function(){
+    $(".mul-select-status").select2({
+      placeholder: "Select College Status", //placeholder
+      tags: true,
+      tokenSeparators: ['/',',',';'," "] 
+  });
+})
+
+$(document).ready(function(){
+    $(".mul-select-courses").select2({
+      placeholder: "Select Courses", //placeholder
+      tags: true,
+      tokenSeparators: ['/',',',';'," "] 
+  });
+})
+
+$(document).ready(function(){
+    $(".mul-select-location").select2({
+      placeholder: "Select College Location", //placeholder
+      tags: true,
+      tokenSeparators: ['/',',',';'," "] 
+  });
+})
+</script>
 {%endblock content%}
