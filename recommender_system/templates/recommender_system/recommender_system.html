@@ -7,7 +7,295 @@
     <div class="text mx-3 my-3 text-dark" ><h1>College Recommender System</h1></div>
   <div class="container" style="background-color: inherit;">
     <form method="POST">
+      
       {% csrf_token %}
+      <!-- Student Percentage -->
+      <div class="row">
+        <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Percentage:</label>
+        <div class="col my-2">
+          <input type="text" name="from_percentage" id="" class="form-control" placeholder="From percentage" required>
+        </div>
+        <div class="col my-2">
+          <input type="text" name="to_percentage" id="" class="form-control" placeholder="To percentage" required>
+        </div>
+      </div>
+      
+      <!-- Seat type -->
+      <div class="row">
+        <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Seat Type:</label>
+        <div class="col my-2 my-2">
+          <select name="seat_type1" class="form-control" required>
+            <option value="" selected disabled>Select Seat Type</option>
+            <option value="EWS">EWS</option>
+            <optgroup label="OPEN">
+              <option value="GOPEN" >GOPEN</option>
+              <option value="LOPEN">LOPEN</option>
+            </optgroup>
+            <optgroup label="Minority(if applicable)">
+              <option value="MI" >MI</option>
+              <option value="MI-MH">MI-MH</option>
+            </optgroup>
+            <optgroup label="OBC">
+              <option value="GOBC" >GOBC</option>
+              <option value="LOBC">LOBC</option>
+            </optgroup>
+            <optgroup label="SC">
+              <option value="GSC" >GSC</option>
+              <option value="LSC">LSC</option>
+            </optgroup>
+            <optgroup label="ST">
+              <option value="GST" >GST</option>
+              <option value="LST">LST</option>
+            </optgroup>
+            <optgroup label="PWD">
+              <option value="PWD-O" >PWD-O</option>
+              <option value="PWD-OBC">PWD-OBC</option>
+              <option value="PWDR-SC">PWDR-SC</option>
+            </optgroup>
+            <optgroup label="DEF">
+              <option value="DEF-O" >DEF-O</option>
+              <option value="DEF-OBC">DEF-OBC</option>
+            </optgroup>
+            <optgroup label="NT">
+              <option value="GNTA" >GNTA</option>
+              <option value="GNTB">GNTB</option>
+              <option value="GNTC" >GNTC</option>
+              <option value="GNTD">GNTD</option>
+              <option value="LNTA" >LNTA</option>
+              <option value="LNTB">LNTB</option>
+              <option value="LNTC" >LNTC</option>
+              <option value="LNTD">LNTD</option>
+            </optgroup>
+            <option value="ORP">ORP</option>
+          </select>
+        </div>
+        <div class="col my-2 my-2">
+          <select name="seat_type2" class="form-control">
+            <option value="" selected disabled>Select Seat Type(Optional)</option>
+            <option value="EWS">EWS</option>
+            <optgroup label="OPEN">
+              <option value="GOPEN" >GOPEN</option>
+              <option value="LOPEN">LOPEN</option>
+            </optgroup>
+            <optgroup label="Minority(if applicable)">
+              <option value="MI" >MI</option>
+              <option value="MI-MH">MI-MH</option>
+            </optgroup>
+            <optgroup label="OBC">
+              <option value="GOBC" >GOBC</option>
+              <option value="LOBC">LOBC</option>
+            </optgroup>
+            <optgroup label="SC">
+              <option value="GSC" >GSC</option>
+              <option value="LSC">LSC</option>
+            </optgroup>
+            <optgroup label="ST">
+              <option value="GST" >GST</option>
+              <option value="LST">LST</option>
+            </optgroup>
+            <optgroup label="PWD">
+              <option value="PWD-O" >PWD-O</option>
+              <option value="PWD-OBC">PWD-OBC</option>
+              <option value="PWDR-SC">PWDR-SC</option>
+            </optgroup>
+            <optgroup label="DEF">
+              <option value="DEF-O" >DEF-O</option>
+              <option value="DEF-OBC">DEF-OBC</option>
+            </optgroup>
+            <optgroup label="NT">
+              <option value="GNTA" >GNTA</option>
+              <option value="GNTB">GNTB</option>
+              <option value="GNTC" >GNTC</option>
+              <option value="GNTD">GNTD</option>
+              <option value="LNTA" >LNTA</option>
+              <option value="LNTB">LNTB</option>
+              <option value="LNTC" >LNTC</option>
+              <option value="LNTD">LNTD</option>
+            </optgroup>
+            <option value="ORP">ORP</option>
+          </select>
+        </div>
+        <div class="col my-2 my-2" style="display: none;">
+          <select name="seat_type3" class="form-control">
+            <option value="" disabled>Select Seat Type(Optional)</option>
+            <option value="EWS">EWS</option>
+            <optgroup label="OPEN">
+              <option value="GOPEN" selected>GOPEN</option>
+              <option value="LOPEN">LOPEN</option>
+            </optgroup>
+            <optgroup label="Minority(if applicable)">
+              <option value="MI" >MI</option>
+              <option value="MI-MH">MI-MH</option>
+            </optgroup>
+            <optgroup label="OBC">
+              <option value="GOBC" >GOBC</option>
+              <option value="LOBC">LOBC</option>
+            </optgroup>
+            <optgroup label="SC">
+              <option value="GSC" >GSC</option>
+              <option value="LSC">LSC</option>
+            </optgroup>
+            <optgroup label="ST">
+              <option value="GST" >GST</option>
+              <option value="LST">LST</option>
+            </optgroup>
+            <optgroup label="PWD">
+              <option value="PWD-O" >PWD-O</option>
+              <option value="PWD-OBC">PWD-OBC</option>
+              <option value="PWDR-SC">PWDR-SC</option>
+            </optgroup>
+            <optgroup label="DEF">
+              <option value="DEF-O" >DEF-O</option>
+              <option value="DEF-OBC">DEF-OBC</option>
+            </optgroup>
+            <optgroup label="NT">
+              <option value="GNTA" >GNTA</option>
+              <option value="GNTB">GNTB</option>
+              <option value="GNTC" >GNTC</option>
+              <option value="GNTD">GNTD</option>
+              <option value="LNTA" >LNTA</option>
+              <option value="LNTB">LNTB</option>
+              <option value="LNTC" >LNTC</option>
+              <option value="LNTD">LNTD</option>
+            </optgroup>
+            <option value="ORP">ORP</option>
+          </select>
+        </div>  
+      </div>
+      <!-- Course Name -->
+      <div class="row">
+        <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Courses Name:</label>
+        <div class="col my-2 my-2">
+          <select name="course1" class="form-control" required>
+            <option value="" selected disabled>Select Courses Type</option>
+            <optgroup label="General Engineering Courses">
+              <option value="Computer Engineering" >Computer Engineering</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+              <option value="Production Engineering">Production Engineering</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="col my-2 my-2">
+          <select name="course2" class="form-control" required>
+            <option value="" selected disabled>Select Course Type</option>
+            <optgroup label="General Engineering Courses">
+              <option value="Computer Engineering" >Computer Engineering</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+              <option value="Production Engineering">Production Engineering</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="col my-2 my-2">
+          <select name="course3" class="form-control" required>
+            <option value="" selected disabled>Select Course Type</option>
+            <optgroup label="General Engineering Courses">
+              <option value="Computer Engineering" >Computer Engineering</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+              <option value="Production Engineering">Production Engineering</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col my-2 my-2">
+          <select name="course4" class="form-control">
+            <option value="" selected disabled>Select Course Type(Optional)</option>
+            <optgroup label="General Engineering Courses">
+              <option value="Computer Engineering" >Computer Engineering</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+              <option value="Production Engineering">Production Engineering</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="col my-2 my-2">
+          <select name="course5" class="form-control">
+            <option value="" selected disabled>Select Course Type(Optional)</option>
+            <optgroup label="General Engineering Courses">
+              <option value="Computer Engineering" >Computer Engineering</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+              <option value="Production Engineering">Production Engineering</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="col my-2 my-2">
+          <select name="course6" class="form-control">
+            <option value="" selected disabled>Select Course Type(Optional)</option>
+            <optgroup label="General Engineering Courses">
+              <option value="Computer Engineering" >Computer Engineering</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+              <option value="Production Engineering">Production Engineering</option>
+            </optgroup>
+          </select>
+        </div>
+        
+      </div>
+    
       <!-- Location -->
       
         <div class="row">
@@ -21,8 +309,8 @@
             </select>
           </div>
           <div class="col my-2">
-            <select name="college_location2" class="form-control">
-              <option value="" disabled selected>Select College Location(Optional)</option>
+            <select name="college_location2" class="form-control" required>
+              <option value="" disabled selected>Select College Location</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Thane">Thane</option>
               <option value="Pune">Pune</option>
@@ -37,7 +325,7 @@
             </select>
           </div>
         </div>
-          <!-- College Status -->
+        <!-- College Status -->
         <div class="row">
           <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>College Status:</label>
           <div class="col my-2 my-2">
@@ -62,8 +350,8 @@
             </select>
           </div>
           <div class="col my-2">
-            <select name="college_status2" class="form-control">
-              <option value="" selected disabled>Select College Status(Optional)</option>
+            <select name="college_status2" class="form-control" required>
+              <option value="" selected disabled>Select College Status</option>
               <optgroup label="Government colleges" >
                   <option value="Government">Government</option>
                   <option value="Government Autonomous">Government Autonomous</option>
@@ -83,8 +371,8 @@
             </select>
           </div>
           <div class="col my-2">
-            <select name="college_status3" class="form-control" >
-              <option value="" selected disabled>Select College Status(Optional)</option>
+            <select name="college_status3" class="form-control" required>
+              <option value="" selected disabled>Select College Status</option>
               <optgroup label="Government colleges" >
                   <option value="Government">Government</option>
                   <option value="Government Autonomous">Government Autonomous</option>
@@ -106,8 +394,8 @@
         </div>
         <div class="row">
           <div class="col my-2 my-2">
-            <select name="college_status6" class="form-control" required>
-              <option value="" selected disabled>Select College Status(Optional)</option>
+            <select name="college_status4" class="form-control" required>
+              <option value="" selected disabled>Select College Status</option>
               <optgroup label="Government colleges" >
                   <option value="Government">Government</option>
                   <option value="Government Autonomous">Government Autonomous</option>
@@ -127,8 +415,8 @@
             </select>
           </div>
           <div class="col my-2">
-            <select name="college_status5" class="form-control">
-              <option value="" selected disabled>Select College Status(Optional)</option>
+            <select name="college_status5" class="form-control" required>
+              <option value="" selected disabled>Select College Status</option>
               <optgroup label="Government colleges" >
                   <option value="Government">Government</option>
                   <option value="Government Autonomous">Government Autonomous</option>
@@ -148,7 +436,7 @@
             </select>
           </div>
           <div class="col my-2">
-            <select name="college_status6" class="form-control" >
+            <select name="college_status6" class="form-control">
               <option value="" selected disabled>Select College Status(Optional)</option>
               <optgroup label="Government colleges" >
                   <option value="Government">Government</option>
@@ -170,7 +458,7 @@
           </div>
           <div class="row">
             <div class="col my-2">
-              <select name="college_status7" class="form-control" required>
+              <select name="college_status7" class="form-control">
                 <option value="" selected disabled>Select College Status(Optional)</option>
                 <optgroup label="Government colleges" >
                     <option value="Government">Government</option>
@@ -213,10 +501,56 @@
             </div>
             
         </div>
+        <!-- Minority Status -->
+        <div class="row">
+          <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Minority Status:</label>
+          <div class="col my-2 my-2" style="display: none;">
+            <select name="minority1" class="form-control" required>
+              <option value="" selected disabled>Select Minority Status</option>
+              <option value="NA" selected>Not Applicable</option>
+              <optgroup label="Linguistic Minority">
+                <option value="Linguistic Minority - Gujarathi(Jain)">Gujarathi(Jain)</option>
+                <option value="Linguistic Minority - Gujarathi">Gujarathi</option>
+                <option value="Linguistic Minority - Hindi">Hindi</option>
+                <option value="Linguistic Minority - Malyalam">Malyalam</option>
+                <option value="Linguistic Minority - Punjabi">Punjabi</option>
+                <option value="Linguistic Minority - Sindhi">Sindhi</option>
+                <option value="Linguistic Minority - Tamil">Tamil</option>
+            </optgroup>
+            
+            <optgroup label="Unaided Religious Minority Colleges">
+                <option value="Religious Minority - Christian">Christian</option>
+                <option value="Religious Minority - Jain">Jain</option>
+                <option value="Religious Minority - Muslim">Muslim</option>
+            </optgroup>
+            </select>
+          </div>
+          <div class="col my-2 my-2">
+            <select name="minority2" class="form-control" required>
+              <option value="" selected disabled>Select Minority Status</option>
+              <option value="NA">Not Applicable</option>
+              <optgroup label="Linguistic Minority">
+                <option value="Linguistic Minority - Gujarathi(Jain)">Gujarathi(Jain)</option>
+                <option value="Linguistic Minority - Gujarathi">Gujarathi</option>
+                <option value="Linguistic Minority - Hindi">Hindi</option>
+                <option value="Linguistic Minority - Malyalam">Malyalam</option>
+                <option value="Linguistic Minority - Punjabi">Punjabi</option>
+                <option value="Linguistic Minority - Sindhi">Sindhi</option>
+                <option value="Linguistic Minority - Tamil">Tamil</option>
+            </optgroup>
+            
+            <optgroup label="Unaided Religious Minority Colleges">
+                <option value="Religious Minority - Christian">Christian</option>
+                <option value="Religious Minority - Jain">Jain</option>
+                <option value="Religious Minority - Muslim">Muslim</option>
+            </select>
+          </div>
+          
+        </div>
 
       <center class="my-3"><input type="submit" value="Search"></center>
       
-      <table class="table" id="recommendation">
+      <table class="table grid example" id="sort">
         <thead>
           <tr>
             <th scope="col my-2">College Code</th>
@@ -246,13 +580,31 @@
           {% endfor %}
         </tbody>
       </table>
-
+      
     </form>
+    <input type="button" id="btnExport" value="Export" />
   </div>
 </section>
-
 <script>
+  
   $(document).ready(function(){
+    $( function() {
+      $( "#sort tbody" ).sortable();
+    } );
+    $("body").on("click", "#btnExport", function () {
+      html2canvas($('.example')[0], {
+          onrendered: function (canvas) {
+              var data = canvas.toDataURL();
+              var docDefinition = {
+                  content: [{
+                      image: data,
+                      width: 500
+                  }]
+              };
+              pdfMake.createPdf(docDefinition).download("customer-details.pdf");
+          }
+      });
+  });
     $(".mul-select-status").select2({
       placeholder: "Select College Status(Optional)", //placeholder
       tags: true,
