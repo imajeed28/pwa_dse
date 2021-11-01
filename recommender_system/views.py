@@ -88,3 +88,6 @@ def searchresult(request):
 
 # percentage between "'+frompercentage+'" and "'+topercentage+'"  and
 # and college_location="'+str(college_location)+'"
+
+def compareresult(request):
+    return render(request, 'recommender_system/college_comparison.html')

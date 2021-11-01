@@ -1,8 +1,7 @@
 {% extends 'landing/base.html' %}
 {% block content %}
-<style>
-  
-</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 <section class="home-section recommender">
     <div class="text mx-3 my-3 text-dark" ><h1>College Recommender System</h1></div>
   <div class="container" style="background-color: inherit;">
@@ -11,7 +10,7 @@
       {% csrf_token %}
       <!-- Student Percentage -->
       <div class="row">
-        <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Percentage:</label>
+        <label style="font-size: 1.75rem;"><i class="fas fa-percentage" style="font-size: 1.5rem;"></i>Percentage:</label>
         <div class="col my-2">
           <input type="text" name="from_percentage" id="" class="form-control" placeholder="From percentage" required>
         </div>
@@ -22,7 +21,7 @@
       
       <!-- Seat type -->
       <div class="row">
-        <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Seat Type:</label>
+        <label style="font-size: 1.75rem;"><i class="fas fa-chair" style="font-size: 1.5rem;"></i>Seat Type:</label>
         <div class="col my-2 my-2">
           <select name="seat_type1" class="form-control" required>
             <option value="" selected disabled>Select Seat Type</option>
@@ -164,7 +163,7 @@
       </div>
       <!-- Course Name -->
       <div class="row">
-        <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Courses Name:</label>
+        <label style="font-size: 1.75rem;"><i class="fas fa-book" style="font-size: 1.5rem;"></i>Courses Name:</label>
         <div class="col my-2 my-2">
           <select name="course1" class="form-control" required>
             <option value="" selected disabled>Select Courses Type</option>
@@ -327,7 +326,7 @@
         </div>
         <!-- College Status -->
         <div class="row">
-          <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>College Status:</label>
+          <label style="font-size: 1.75rem;"><i class="fas fa-university" style="font-size: 1.5rem;"></i>College Status:</label>
           <div class="col my-2 my-2">
             <select name="college_status1" class="form-control" required>
               <option value="" selected disabled>Select College Status</option>
@@ -503,7 +502,7 @@
         </div>
         <!-- Minority Status -->
         <div class="row">
-          <label style="font-size: 1.75rem;"><i class="fas fa-map-marker-alt" style="font-size: 1.5rem;"></i>Minority Status:</label>
+          <label style="font-size: 1.75rem;"><i class="fas fa-user-friends" style="font-size: 1.5rem;"></i>Minority Status:</label>
           <div class="col my-2 my-2" style="display: none;">
             <select name="minority1" class="form-control" required>
               <option value="" selected disabled>Select Minority Status</option>
@@ -548,7 +547,7 @@
           
         </div>
 
-      <center class="my-3"><input type="submit" value="Search"></center>
+      <center class="my-3"><input type="submit" class='btn btn-primary' value="Search"></center>
       
       <table class="table grid example" id="sort">
         <thead>
@@ -561,7 +560,7 @@
             <th scope="col my-2">Seat Type Intake</th>
             <th scope="col my-2">Status</th>
             <th scope="col my-2">Minority</th>
-            <th scope="col my-2">Percentage</th>
+            <th scope="col my-2">%</th>
           </tr>
         </thead>
         <tbody>
@@ -582,35 +581,80 @@
       </table>
       
     </form>
-    <input type="button" id="btnExport" value="Export" />
+    <input type="button" onclick="generate()" style="content:f019;" value="Export To PDF" class="btn btn-success" />
   </div>
 </section>
 <script>
-  
-  $(document).ready(function(){
-    $( function() {
-      $( "#sort tbody" ).sortable();
-    } );
-    $("body").on("click", "#btnExport", function () {
-      html2canvas($('.example')[0], {
-          onrendered: function (canvas) {
-              var data = canvas.toDataURL();
-              var docDefinition = {
-                  content: [{
-                      image: data,
-                      width: 500
-                  }]
-              };
-              pdfMake.createPdf(docDefinition).download("customer-details.pdf");
-          }
-      });
-  });
-    $(".mul-select-status").select2({
+  $( function() {
+    $( "#sort tbody" ).sortable();
+  } );
+  function generate() {
+    var doc = new jsPDF('p', 'pt', 'letter');
+    var htmlstring = '';
+    var tempVarToCheckPageHeight = 0;
+    var pageHeight = 0;
+    pageHeight = doc.internal.pageSize.height;
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector  
+        '#bypassme': function (element, renderer) {
+            // true = "handled elsewhere, bypass text extraction"  
+            return true
+        }
+    };
+    margins = {
+        top: 1,
+        bottom: 1,
+        left: 1,
+        right:1,
+        width:1
+    };
+    var y = 1;
+    doc.setLineWidth(2);
+    doc.text(1, y = y + 1, " ");
+    doc.autoTable({
+        html: '#sort',
+        startY: 30,
+        theme: 'grid',
+        columnStyles: {
+            0: {
+                cellWidth: 45,
+            },
+            1: {
+                cellWidth:120,
+            },
+            2: {
+                cellWidth: 80,
+            },
+            3: {
+                cellWidth: 60,
+            },
+            4: {
+                cellWidth: 60,
+            },
+            5: {
+                cellWidth: 50,
+            },
+            6: {
+                cellWidth: 55,
+            },
+            7: {
+                cellWidth: 50,
+            },
+            8: {
+                cellWidth: 35,
+            }
+        },
+        styles: {
+            minCellHeight: 50
+        }
+    })
+    doc.save('College_List.pdf');
+}
+     $(".mul-select-status").select2({
       placeholder: "Select College Status(Optional)", //placeholder
       tags: true,
       tokenSeparators: ['/',',',';'," "] 
   });
-})
 
 $(document).ready(function(){
     $(".mul-select-courses").select2({
@@ -628,4 +672,8 @@ $(document).ready(function(){
   });
 })
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 {%endblock content%}
