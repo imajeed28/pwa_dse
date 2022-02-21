@@ -42,6 +42,7 @@ AUTHENTICATION_BACKENDS = [
 
 INSTALLED_APPS = [
     'recommender_system',
+    'prediction',
     'landing',
     'crispy_forms',
     'allauth',
@@ -96,12 +97,15 @@ WSGI_APPLICATION = 'pwa_dse.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dse_finder',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
+        'OPTIONS': {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    },
     }
 }
 
@@ -144,8 +148,11 @@ USE_TZ = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
-] 
+]
+
 STATIC_URL = '/static/'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

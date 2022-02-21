@@ -1,5 +1,386 @@
 {% extends 'landing/base.html'%}
 
 {% block content %}
- 
+<style>
+  
+  .home-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    height: 90vh;
+}
+
+.home-contents{
+    margin:auto;
+}
+.home-contents .content-heading{
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #00384d;
+
+}
+
+.home-contents .content-info{
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.donate-button-container{
+    display: flex;
+    justify-content: space-between;
+}
+.home-contents .btn form {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    border-radius: 0.50rem;
+    padding: 0.75rem 0rem;
+    opacity: 0.5;
+    transition: 0.3s ease-in;
+}
+
+.home-contents .btn form:hover{
+    opacity: 1;
+}
+
+.modal-title{
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+.learn-btn{
+    background-color: inherit;
+    font-size: 1.5rem;
+    color: #1155ad;
+    text-decoration: underline;
+    outline: none;
+    box-shadow: none;
+    border: 0;
+
+}
+
+.learn-btn:focus, .learn-btn:active{
+    outline: transparent none 0 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+.learn-btn:hover{
+    background-color: inherit;
+    color: inherit;
+    text-decoration: underline;
+}
+
+.modal-body{
+    font-size: 1rem;
+}
+.donate-img{
+    padding-left: 6rem;
+    margin: auto;
+}
+.donate-img img{
+    max-width: 50rem;
+    height: 40rem;
+}
+
+  .feature-container{
+    max-height: 100vh;
+    margin: 2rem auto;
+  }
+ .feature-title{
+     text-align: center;
+     color: #00384d;
+}
+
+.card-icon{
+  text-align: center;
+  font-size: 5.75rem;
+  margin: 0.5rem 0;
+}
+ .wrapper{
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+}
+ .card{
+    max-width: 300px;
+     min-height: 250px;
+     background: #02b875;
+     padding: 30px;
+     box-sizing: border-box;
+     color: #FFF;
+     margin:20px;
+     box-shadow: 0px 2px 18px -4px rgba(0,0,0,0.75);
+}
+.card:nth-child(1){
+    background: #00384d;
+}
+ .card:nth-child(2){
+    background: #00384d;
+}
+ .card:last-child{
+    background: #00384d;
+}
+ .card-title{
+     margin-top: 0;
+     font-size: 2rem;
+     font-weight: 600;
+   text-align: center;
+     letter-spacing: 1.2px;
+}
+ .card-content{
+     font-size: 1.10rem;
+     letter-spacing: 0.5px;
+   
+   text-align: center;
+     line-height: 1.5;
+}
+ .card-btn{
+     all: unset;
+     display: block;
+     margin: auto;
+     border: 2px solid #FFF;
+     padding: 10px 15px;
+     border-radius: 25px;
+     font-size: 10px;
+     font-weight: 600;
+     transition: all 0.5s;
+     letter-spacing: 1.2px;
+}
+ .card-btn:hover{
+    color:#00384d;
+    background: #FFF;
+   
+}
+ .card:nth-child(2) .card-btn:hover{
+    color:#00384d;
+    background: #FFF;
+}
+ .card:last-child .card-btn:hover{
+    color:#00384d;
+     background: #FFF;
+}
+@media screen and (max-width:1280px){
+    
+  .donate-img{
+      margin: 0 auto 0 auto;
+      padding-left: 0rem;
+  }
+  .donate-img img{
+      max-width: 35rem;
+      height: 35rem;
+  }
+  .follow-us-container{
+      margin-top: 3rem;
+  }
+  
+}
+
+/* For Tablet View*/
+@media screen and (max-width:1024px){
+  .logo{
+      padding: 0.75rem 0rem 0rem 1.75rem;
+  }
+
+  .logo h2{
+      font-size: 2.5rem;  
+  }
+  .home-container{
+      flex-direction: column;
+      margin: 0;
+  }
+
+  .home-contents{
+      margin-top: 3.25rem;
+      text-align: center;
+  }
+  
+  
+  
+  .donate-button-container{
+      flex-direction: column;
+      justify-content: center;
+  }
+  
+
+  .learn-more{
+      text-align: center;
+      padding: 0rem 0rem .35rem 0rem;
+      margin-top: -1.5rem;
+  }
+
+  .learn-btn{
+      font-size: 1.5rem;
+  
+  }
+  .donate-img{
+      margin: 0 auto 0 auto;
+      padding-left: 0rem;
+  }
+  .donate-img img{
+      max-width: 35rem;
+      height: 17rem;
+  }
+  
+  .follow-us-container{
+      margin-top: 3rem;
+  }
+  .social-icons {
+      font-size: 1.25rem;
+      margin: 0.55rem 0rem;
+      color: #0b356d;
+  }
+  #homepage-main{
+      overflow: auto;
+      padding-bottom: 0px;
+      padding: 0px;
+  }
+
+  #main-footer{
+      height: 50px;
+      margin-top: -50px;
+      clear: both;
+  }
+  
+  .footer-contents, .footer-link{
+      font-size: 1.25rem;
+  }
+}
+
+/*For Mobile View*/
+@media screen and (max-width:768px){
+  .logo{
+      padding: 0.75rem 0rem 0rem 1.75rem;
+  }
+
+  .logo h2{
+      font-size: 2.5rem;  
+  }
+  .home-container{
+      flex-direction: column;
+      margin: auto;
+  }
+
+  .home-contents{
+      margin-top: 1.25rem;
+      text-align: center;
+  }
+  .home-contents .content-heading{
+      font-size: 2.5rem;
+      font-weight: bolder;
+  
+  }
+  
+  
+  .home-contents .content-info, a{
+      font-size: 1.55rem;
+      font-weight: 500;
+  }
+  
+  .donate-button-container{
+      flex-direction: column;
+      justify-content: center;
+  }
+  
+  .home-contents .btn form:hover{
+      opacity: 1;
+  }
+  
+
+  .learn-more{
+      text-align: center;
+      padding: 0rem 0rem .35rem 0rem;
+      margin-top: -1.5rem;
+  }
+
+  .learn-btn{
+      font-size: 1.5rem;
+  
+  }
+  .donate-img{
+      margin: -2rem auto auto auto;
+
+  }
+  .donate-img img{
+      max-width: 35rem;
+      height: 15rem;
+  }
+  
+  
+  
+  .follow-us-container{
+      font-size: 1.25rem;
+      margin-top: 2.23rem;
+      float: unset;
+      text-align: center;
+  }
+  
+  
+  .social-icons {
+      font-size: 1.25rem;
+      margin: 0.55rem 0rem;
+  }
+  #homepage-main{
+      overflow: auto;
+      padding-bottom: 0px;
+      padding: 0px;
+  }
+
+  #main-footer{
+      height: 50px;
+      margin-top: -50px;
+      clear: both;
+  }
+  
+  .footer-contents, .footer-link{
+      font-size: 1.25rem;
+  }
+}
+</style>
+  <div id="homepage-container">
+      <div id="homepage-main">
+          <div class="home-container">
+              <div class="home-contents animate__animated animate__fadeInLeft" >
+                  <div class="content-heading"  >
+                    The first ever web app for DSE to
+                          <div class="content-info">
+                            Generate List,
+                            Compare Colleges,
+                            Predicit cutoff
+                          </div>
+                          
+                  </div>    
+              </div>
+
+              <div class="donate-img animate__animated animate__fadeInRight">
+                  <img src="/media/logo/home1.png" alt="donate" srcset="">
+              </div>
+      
+          </div> 
+
+      </div>
+  </div>
+  
+<div class="feature-container">
+  <h1 class="feature-title">Features of DSEFinder</h1>
+<div class="wrapper">
+<div class="card">
+  <i class="fas fa-clipboard-list card-icon"></i>
+	<h3 class="card-title">College Recommender</h3>
+		<p class="card-content">Get the list of college based on your percentage and  preferences</p>
+		<a href="{% url 'recommender_system' %}"class="card-btn">NAVIGATE</a>
+	</div>
+	<div class="card">
+  <i class="fas fa-university card-icon"></i>
+	<h3 class="card-title">College Comparison</h3>
+		<p class="card-content">Get Comparison of DSE colleges for better understanding</p>
+		<a href="{% url 'college_comparison' %}" class="card-btn">NAVIGATE</a>
+	</div>
+  <div class="card">
+  <i class="fas fa-chart-line card-icon"></i>
+	<h3 class="card-title">Cutoff Predictor</h3>
+		<p class="card-content">Predicit cutoff of colleges for upcoming admission process</p>
+		<a href="{% url 'prediction' %}" class="card-btn">NAVIGATE</a>
+	</div>
+</div>
+</div>
+
 {% endblock content %}
