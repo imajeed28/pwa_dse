@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import request
-from .models import RecommendationSystemModel
+from .models import RecommendationSystemModel, CollegeComparisonModel
 # Create your views here.
 
 def searchresult(request):
@@ -90,4 +90,27 @@ def searchresult(request):
 # and college_location="'+str(college_location)+'"
 
 def compareresult(request):
-    return render(request, 'recommender_system/college_comparison.html')
+    if request.method=="POST":
+        college1=request.POST.get("college1")
+        college2=request.POST.get("college2")
+        college3=request.POST.get("college3")
+        college4=request.POST.get("college4")
+        if (college2==None):
+            college2=request.POST.get("college1")
+        else:
+            college2=request.POST.get("college2")
+        if (college3==None):
+            college3=request.POST.get("college1")
+        else:
+            college3=request.POST.get("college3")
+        if (college4==None):
+            college4=request.POST.get("college1")
+        else:
+            college4=request.POST.get("college4")
+        query=CollegeComparisonModel.objects.raw('select * from college_details_v1 where college_name in("'+college1+'","'+college2+'","'+college3+'","'+college4+'") order by "'+college1+'" ')
+        context={
+            'data1':query
+        }
+        return render(request, 'recommender_system/college_comparison.html',context)
+    else:
+        return render(request, 'recommender_system/college_comparison.html')

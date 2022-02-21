@@ -1,0 +1,47 @@
+{% extends 'landing/base.html' %}
+{% block content %}
+<div class="text mx-2 my-4 text-dark" ><h1>Cutoff Predictor</h1></div>
+<div class="container" style="background-color: inherit;">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col my-2">
+                <label for="" style="font-size: 1.35rem;" class="my-1"><i class="fas fa-university" style="font-size: 1.55rem; margin-right:0.5rem;"></i>College Name</label>
+              <select name="college" class="form-control" required>
+                  
+                <option value="" disabled selected>Select College Name</option>
+                <option value="VJTI">VJTI</option>
+              </select>
+            </div>
+            <div class="col my-2">
+                <label for="" style="font-size: 1.35rem;" class="my-1"><i class="fas fa-book" style="font-size: 1.55rem; margin-right:0.5rem;"></i>Course Name</label>
+              <select name="course" class="form-control" required>
+                <option value="" disabled selected>Select College Course</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+              </select>
+            </div>
+    </form>
+    <center class="my-3"><input type="submit" class='btn btn-primary' value="Predict"></center>
+    <table class="table grid example" id="sort">
+        <thead>
+          <tr>
+            <th scope="col my-2">College Name</th>
+            <th scope="col my-2">Course Name</th>
+            <th scope="col my-2">Seat Type</th>
+            <th scope="col my-2"> Predicted %</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in data1 %}
+          <tr>
+            <td>{{result.college_name}}</td>
+            <td>{{result.course}}</td>
+            <td>{{result.seat_type}}</td>
+            <td>{{result.C2021}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock content%}

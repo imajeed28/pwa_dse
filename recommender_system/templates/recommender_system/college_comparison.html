@@ -1,5 +1,307 @@
 {% extends 'landing/base.html'%}
 
 {% block content %}
-hello
+<div class="text mx-2 my-4 text-dark" ><h1>Compare Colleges</h1></div>
+ <div class="row">
+    <form action="" method="POST" class="col">
+      <div class="row">
+        {% csrf_token %}
+          <div class="col my-2 mx-2">
+            <select name="college1" id="" class="form-control" required>
+                <option value="" selected disabled> Select college for comparison </option>
+                <optgroup label="Mumbai Colleges">
+                  <option value="Veermata Jijabai Technological Institute(VJTI)">Veermata Jijabai Technological Institute(VJTI)</option>
+                  <option value="Sardar Patel College of Engineering (SPCE)">Sardar Patel College of Engineering (SPCE)</option>
+                  <option value="Usha Mittal Institute of Technology (UMIT)">Usha Mittal Institute of Technology (UMIT)</option>
+                  <option value="Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)">Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)</option>
+                  <option value="Vidyalankar Institute of Technology (VIT)">Vidyalankar Institute of Technology (VIT)</option>
+                  <option value="K. J. Somaiya College of Engineering (KJSE)">K. J. Somaiya College of Engineering (KJSE)</option>
+                  <option value="Thadomal Shahani Engineering Collage (TSEC)">Thadomal Shahani Engineering Collage (TSEC)</option>
+                  <option value="Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)">Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)</option>
+                  <option value="Fr. Conceicao Rodrigues College of Engineering (FCRCE)">Fr. Conceicao Rodrigues College of Engineering (FCRCE)</option>
+                  <option value="Rizvi Collage of Engineering (RCE)">Rizvi Collage of Engineering (RCE)</option>
+                  <option value="Atharva Collage of Engineering (ACE))">Atharva Collage of Engineering (ACE)</option>
+                  <option value="St. Francis Institute of Technology (SFIT)">St. Francis Institute of Technology (SFIT)</option>
+                  <option value="Don Bosco Institute of Technology (DBIT)">Don Bosco Institute of Technology (DBIT)</option>
+                </optgroup>
+                <optgroup label="Thane Colleges">
+                    <option value="Terna Engineering College (TEC)">Terna Engineering College (TEC)</option>
+                    <option value="Vidyavardhini Collage of Engineering and Technology (VCET)">Vidyavardhini Collage of Engineering and Technology (VCET)</option>
+                    <option value="FR. C. Rodrigues Institute of Technology(FCRIT)">FR. C. Rodrigues Institute of Technology(FCRIT)</option>
+                    <option value="Excelsior Educational Society's K.C. Collage of Engineering (KCCE)">Excelsior Educational Society's K.C. Collage of Engineering (KCCE)</option>
+                    <option value="S.I.E.S Gradutate School of Technology (SIES)">S.I.E.S Gradutate School of Technology (SIES)</option>
+                    <option value="Jondhale Collage of Engineering (JCE)">Jondhale Collage of Engineering (JCE)</option>
+                    <option value="Universal Collage of Engineering (UCE)">Universal Collage of Engineering (UCE)</option>
+                    <option value="Ideal Institue of Technology (IIT)">Ideal Institue of Technology (IIT)</option>
+                    <option value="New Horizon Institute of Technology (NHIT)">New Horizon Institute of Technology (NHIT)</option>
+                    <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
+                </optgroup>
+                <optgroup label="Pune Colleges">
+                  <option value="
+                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
+                  <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
+                  <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
+                  <option value="JSPM Narhe Technical Campus ">JSPM Narhe Technical Campus </option>
+              </optgroup>
+            </select>
+          </div> 
+          <div class="col my-2 mx-2">
+            <select name="college2" id="" class="form-control" >
+                <option value="" selected disabled> Select college for comparison </option>
+                <optgroup label="Mumbai Colleges">
+                  <option value="Veermata Jijabai Technological Institute(VJTI)">Veermata Jijabai Technological Institute(VJTI)</option>
+                  <option value="Sardar Patel College of Engineering (SPCE)">Sardar Patel College of Engineering (SPCE)</option>
+                  <option value="Usha Mittal Institute of Technology (UMIT)">Usha Mittal Institute of Technology (UMIT)</option>
+                  <option value="Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)">Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)</option>
+                  <option value="Vidyalankar Institute of Technology (VIT)">Vidyalankar Institute of Technology (VIT)</option>
+                  <option value="K. J. Somaiya College of Engineering (KJSE)">K. J. Somaiya College of Engineering (KJSE)</option>
+                  <option value="Thadomal Shahani Engineering Collage (TSEC)">Thadomal Shahani Engineering Collage (TSEC)</option>
+                  <option value="Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)">Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)</option>
+                  <option value="Fr. Conceicao Rodrigues College of Engineering (FCRCE)">Fr. Conceicao Rodrigues College of Engineering (FCRCE)</option>
+                  <option value="Rizvi Collage of Engineering (RCE)">Rizvi Collage of Engineering (RCE)</option>
+                  <option value="Atharva Collage of Engineering (ACE))">Atharva Collage of Engineering (ACE)</option>
+                  <option value="St. Francis Institute of Technology (SFIT)">St. Francis Institute of Technology (SFIT)</option>
+                  <option value="Don Bosco Institute of Technology (DBIT)">Don Bosco Institute of Technology (DBIT)</option>
+                </optgroup>
+                <optgroup label="Thane Colleges">
+                    <option value="Terna Engineering College (TEC)">Terna Engineering College (TEC)</option>
+                    <option value="Vidyavardhini Collage of Engineering and Technology (VCET)">Vidyavardhini Collage of Engineering and Technology (VCET)</option>
+                    <option value="FR. C. Rodrigues Institute of Technology(FCRIT)">FR. C. Rodrigues Institute of Technology(FCRIT)</option>
+                    <option value="Excelsior Educational Society's K.C. Collage of Engineering (KCCE)">Excelsior Educational Society's K.C. Collage of Engineering (KCCE)</option>
+                    <option value="S.I.E.S Gradutate School of Technology (SIES)">S.I.E.S Gradutate School of Technology (SIES)</option>
+                    <option value="Jondhale Collage of Engineering (JCE)">Jondhale Collage of Engineering (JCE)</option>
+                    <option value="Universal Collage of Engineering (UCE)">Universal Collage of Engineering (UCE)</option>
+                    <option value="Ideal Institue of Technology (IIT)">Ideal Institue of Technology (IIT)</option>
+                    <option value="New Horizon Institute of Technology (NHIT)">New Horizon Institute of Technology (NHIT)</option>
+                    <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
+                </optgroup>
+                <optgroup label="Pune Colleges">
+                  <option value="
+                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
+                  <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
+                  <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
+                  <option value="JSPM Narhe Technical Campus ">JSPM Narhe Technical Campus </option>
+              </optgroup>
+            </select>
+          </div>    
+          <div class="col my-2 mx-2">
+            <select name="college3" id="" class="form-control" >
+                <option value="" selected disabled> Select college for comparison </option>
+                <optgroup label="Mumbai Colleges">
+                  <option value="Veermata Jijabai Technological Institute(VJTI)">Veermata Jijabai Technological Institute(VJTI)</option>
+                  <option value="Sardar Patel College of Engineering (SPCE)">Sardar Patel College of Engineering (SPCE)</option>
+                  <option value="Usha Mittal Institute of Technology (UMIT)">Usha Mittal Institute of Technology (UMIT)</option>
+                  <option value="Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)">Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)</option>
+                  <option value="Vidyalankar Institute of Technology (VIT)">Vidyalankar Institute of Technology (VIT)</option>
+                  <option value="K. J. Somaiya College of Engineering (KJSE)">K. J. Somaiya College of Engineering (KJSE)</option>
+                  <option value="Thadomal Shahani Engineering Collage (TSEC)">Thadomal Shahani Engineering Collage (TSEC)</option>
+                  <option value="Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)">Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)</option>
+                  <option value="Fr. Conceicao Rodrigues College of Engineering (FCRCE)">Fr. Conceicao Rodrigues College of Engineering (FCRCE)</option>
+                  <option value="Rizvi Collage of Engineering (RCE)">Rizvi Collage of Engineering (RCE)</option>
+                  <option value="Atharva Collage of Engineering (ACE))">Atharva Collage of Engineering (ACE)</option>
+                  <option value="St. Francis Institute of Technology (SFIT)">St. Francis Institute of Technology (SFIT)</option>
+                  <option value="Don Bosco Institute of Technology (DBIT)">Don Bosco Institute of Technology (DBIT)</option>
+                </optgroup>
+                <optgroup label="Thane Colleges">
+                    <option value="Terna Engineering College (TEC)">Terna Engineering College (TEC)</option>
+                    <option value="Vidyavardhini Collage of Engineering and Technology (VCET)">Vidyavardhini Collage of Engineering and Technology (VCET)</option>
+                    <option value="FR. C. Rodrigues Institute of Technology(FCRIT)">FR. C. Rodrigues Institute of Technology(FCRIT)</option>
+                    <option value="Excelsior Educational Society's K.C. Collage of Engineering (KCCE)">Excelsior Educational Society's K.C. Collage of Engineering (KCCE)</option>
+                    <option value="S.I.E.S Gradutate School of Technology (SIES)">S.I.E.S Gradutate School of Technology (SIES)</option>
+                    <option value="Jondhale Collage of Engineering (JCE)">Jondhale Collage of Engineering (JCE)</option>
+                    <option value="Universal Collage of Engineering (UCE)">Universal Collage of Engineering (UCE)</option>
+                    <option value="Ideal Institue of Technology (IIT)">Ideal Institue of Technology (IIT)</option>
+                    <option value="New Horizon Institute of Technology (NHIT)">New Horizon Institute of Technology (NHIT)</option>
+                    <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
+                </optgroup>
+                <optgroup label="Pune Colleges">
+                  <option value="
+                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
+                  <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
+                  <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
+                  <option value="JSPM Narhe Technical Campus ">JSPM Narhe Technical Campus </option>
+              </optgroup>
+            </select>
+          </div> 
+          <div class="col my-2 mx-2">
+            <select name="college4" id="" class="form-control" >
+                <option value="" selected disabled> Select college for comparison </option>
+                <optgroup label="Mumbai Colleges">
+                  <option value="Veermata Jijabai Technological Institute(VJTI)">Veermata Jijabai Technological Institute(VJTI)</option>
+                  <option value="Sardar Patel College of Engineering (SPCE)">Sardar Patel College of Engineering (SPCE)</option>
+                  <option value="Usha Mittal Institute of Technology (UMIT)">Usha Mittal Institute of Technology (UMIT)</option>
+                  <option value="Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)">Manjara Charitable Trust's Rajiv Gandhi Institute of Technology (RGIT)</option>
+                  <option value="Vidyalankar Institute of Technology (VIT)">Vidyalankar Institute of Technology (VIT)</option>
+                  <option value="K. J. Somaiya College of Engineering (KJSE)">K. J. Somaiya College of Engineering (KJSE)</option>
+                  <option value="Thadomal Shahani Engineering Collage (TSEC)">Thadomal Shahani Engineering Collage (TSEC)</option>
+                  <option value="Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)">Anjuman-I-Islam's M.H. Saboo Siddik Collage of Engineering (SSCE)</option>
+                  <option value="Fr. Conceicao Rodrigues College of Engineering (FCRCE)">Fr. Conceicao Rodrigues College of Engineering (FCRCE)</option>
+                  <option value="Rizvi Collage of Engineering (RCE)">Rizvi Collage of Engineering (RCE)</option>
+                  <option value="Atharva Collage of Engineering (ACE))">Atharva Collage of Engineering (ACE)</option>
+                  <option value="St. Francis Institute of Technology (SFIT)">St. Francis Institute of Technology (SFIT)</option>
+                  <option value="Don Bosco Institute of Technology (DBIT)">Don Bosco Institute of Technology (DBIT)</option>
+                </optgroup>
+                <optgroup label="Thane Colleges">
+                    <option value="Terna Engineering College (TEC)">Terna Engineering College (TEC)</option>
+                    <option value="Vidyavardhini Collage of Engineering and Technology (VCET)">Vidyavardhini Collage of Engineering and Technology (VCET)</option>
+                    <option value="FR. C. Rodrigues Institute of Technology(FCRIT)">FR. C. Rodrigues Institute of Technology(FCRIT)</option>
+                    <option value="Excelsior Educational Society's K.C. Collage of Engineering (KCCE)">Excelsior Educational Society's K.C. Collage of Engineering (KCCE)</option>
+                    <option value="S.I.E.S Gradutate School of Technology (SIES)">S.I.E.S Gradutate School of Technology (SIES)</option>
+                    <option value="Jondhale Collage of Engineering (JCE)">Jondhale Collage of Engineering (JCE)</option>
+                    <option value="Universal Collage of Engineering (UCE)">Universal Collage of Engineering (UCE)</option>
+                    <option value="Ideal Institue of Technology (IIT)">Ideal Institue of Technology (IIT)</option>
+                    <option value="New Horizon Institute of Technology (NHIT)">New Horizon Institute of Technology (NHIT)</option>
+                    <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
+                </optgroup>
+                <optgroup label="Pune Colleges">
+                  <option value="
+                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
+                  <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
+                  <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
+                  <option value="JSPM Narhe Technical Campus ">JSPM Narhe Technical Campus </option>
+              </optgroup>
+            </select>
+          </div> 
+          
+            <center class="my-3"><input type="submit" class='btn btn-primary' value="Search"></center>
+      
+          
+              {% for result in data1%}
+              <div class="col">
+                <div class="col my-2 mx-2">
+                    <span class="" style="font-size: 2rem;" >About College</span>
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="font-weight: bold;">College Code</td>
+                            <td>{{result.college_code}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">College Name</td>
+                            <td>{{result.college_name}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">College Location</td>
+                            <td>{{result.college_location}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">College Status</td>
+                            <td>{{result.college_status}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">Minority Status</td>
+                            <td>{{result.minority_status}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">Established Year</td>
+                            <td>{{result.established_year}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col my-2 mx-2">
+                    <span class="" style="font-size: 2rem;" >Courses Offered</span>
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>{{result.course1}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course2}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course3}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course4}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course5}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course6}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course7}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.course8}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col my-2 mx-2">
+                    <span class="" style="font-size: 2rem;" >Courses Info</span>
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="font-weight: bold;">Degree</td>
+                            <td>{{result.degree_type}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">Mode</td>
+                            <td>{{result.mode}}</td>
+                          </tr>
+                          <tr>
+                            <td style="font-weight: bold;">Courses Duration(for DSE) in Years</td>
+                            <td>{{result.duration}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col my-2 mx-2">
+                    <span class="" style="font-size: 2rem;" >Accreditation and Approval</span>
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="font-weight: bold;">Approved by </td>
+                            <td>{{result.approval}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col my-2 mx-2">
+                    <span class="" style="font-size: 2rem;" >Infrastructure</span>
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>{{result.infra1}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra2}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra3}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra4}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra5}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra6}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra7}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra8}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{result.infra9}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+            {% endfor %}
+    </form>
+  
+    
+</div>
 {% endblock content%}

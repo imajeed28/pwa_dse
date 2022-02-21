@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="font-family: 'Open Sans', sans-serif;">
+<nav class="navbar navbar-expand-lg navbar-dark  " style="font-family: 'Open Sans', sans-serif; background-color:#00384d;">
   <div class="container-fluid">
         
     <a class="navbar-brand"
       
         href="{% url 'index' %}" 
-          style="letter-spacing: 0.2rem; font-family: 'Open Sans', sans-serif;"> 
-      <i class="fa fa-university"></i> DSE Finder
+          style="letter-spacing: 0.02rem; font-family: 'Open Sans', sans-serif;"> 
+      <img src="/media/logo/dse-logo.png" alt="" style="max-width:60px; margin-top: -7px;"> DSEFinder
     </a>
         
         
@@ -26,15 +26,15 @@
                   <a class="nav-link" href="{% url 'recommender_system' %}">College Recommender </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Cutoff Predicitor</a>
+                  <a class="nav-link" href="{% url 'prediction' %}">Cutoff Predicitor</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'college_comparison' %}">DSE Colleges</a>
+                  <a class="nav-link" href="{% url 'college_comparison' %}">College Comparison</a>
                 </li>
                 
             </ul>
             
-              <a href="{% url 'account_login' %}" class="btn btn-primary mr-2" style="margin-right: 1rem;">Log In</a>
+              <!-- <a href="{% url 'account_login' %}" class="btn btn-primary mr-2" style="margin-right: 1rem;">Log In</a> -->
               <!-- <button class="btn btn-primary" type="submit" style="margin-right: 1rem;">LOGIN</button>
               <button class="btn btn-outline-light" type="submit">REGISTER</button> -->
       
