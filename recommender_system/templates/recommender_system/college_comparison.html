@@ -1,12 +1,48 @@
 {% extends 'landing/base.html'%}
 
 {% block content %}
-<div class="text mx-2 my-4 text-dark" ><h1>Compare Colleges</h1></div>
+
+<style>
+  .borderless > tbody > tr > td,
+.borderless > tbody > tr > th,
+.borderless > tfoot > tr > td,
+.borderless > tfoot > tr > th,
+.borderless > thead > tr > td,
+.borderless > thead > tr > th {
+    border: none;
+}
+
+.color-mainheader{
+  display: table;
+}
+.color-header{
+  background-color: #00475f;
+  color: whitesmoke;
+  padding: 1rem;
+}
+td{
+  font-size: 1.05rem;
+}
+br{
+  margin: 1rem;
+}
+</style>
+<div class="d-flex justify-content-between">
+
+  <div class="text mx-2 my-4 " style="color: #002e3d;" >
+    <h1>Compare Colleges</h1>
+  </div>
+
+  <div class="mx-2 my-4 ">
+    <a href="{% url 'placement' %}" class="text-white btn btn-secondary"><i class="fas fa-chart-bar"></i> Placement Stats</a>
+  </div>
+</div>
  <div class="row">
     <form action="" method="POST" class="col">
       <div class="row">
         {% csrf_token %}
           <div class="col my-2 mx-2">
+            <div style="font-size: 2.5rem; color:#00475f;"><center><i class="fa fa-university"></i></center></div>
             <select name="college1" id="" class="form-control" required>
                 <option value="" selected disabled> Select college for comparison </option>
                 <optgroup label="Mumbai Colleges">
@@ -37,8 +73,7 @@
                     <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
                 </optgroup>
                 <optgroup label="Pune Colleges">
-                  <option value="
-                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
                   <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
                   <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
                   <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
@@ -47,6 +82,7 @@
             </select>
           </div> 
           <div class="col my-2 mx-2">
+            <div style="font-size: 2.5rem; color:#00475f;"><center><i class="fa fa-university"></i></center></div>
             <select name="college2" id="" class="form-control" >
                 <option value="" selected disabled> Select college for comparison </option>
                 <optgroup label="Mumbai Colleges">
@@ -77,8 +113,7 @@
                     <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
                 </optgroup>
                 <optgroup label="Pune Colleges">
-                  <option value="
-                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
                   <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
                   <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
                   <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
@@ -87,6 +122,7 @@
             </select>
           </div>    
           <div class="col my-2 mx-2">
+            <div style="font-size: 2.5rem; color:#00475f;"><center><i class="fa fa-university"></i></center></div>
             <select name="college3" id="" class="form-control" >
                 <option value="" selected disabled> Select college for comparison </option>
                 <optgroup label="Mumbai Colleges">
@@ -117,8 +153,7 @@
                     <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
                 </optgroup>
                 <optgroup label="Pune Colleges">
-                  <option value="
-                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
                   <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
                   <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
                   <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
@@ -127,6 +162,7 @@
             </select>
           </div> 
           <div class="col my-2 mx-2">
+            <div style="font-size: 2.5rem; color:#00475f;"><center><i class="fa fa-university"></i></center></div>
             <select name="college4" id="" class="form-control" >
                 <option value="" selected disabled> Select college for comparison </option>
                 <optgroup label="Mumbai Colleges">
@@ -157,8 +193,7 @@
                     <option value="A.P.Shah Institute of Technology (APST)">A.P.Shah Institute of Technology (APST)</option>
                 </optgroup>
                 <optgroup label="Pune Colleges">
-                  <option value="
-                  Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
+                  <option value="Collage of Engineering(COEP)">Collage of Engineering(COEP)</option>
                   <option value="Rajarshi Shahu Collage of Engineering">Rajarshi Shahu Collage of Engineering</option>
                   <option value="G.H. Raisoni Collage of Engineering and Managment">G.H. Raisoni Collage of Engineering and Managment</option>
                   <option value="Dhole Patil College of Engineering(DPES)">Dhole Patil College of Engineering(DPES)</option>
@@ -167,14 +202,14 @@
             </select>
           </div> 
           
-            <center class="my-3"><input type="submit" class='btn btn-primary' value="Search"></center>
+            <center class="my-3 mx-3"><input type="submit" class='btn btn-primary' value="Search"></center>
       
           
               {% for result in data1%}
-              <div class="col">
-                <div class="col my-2 mx-2">
-                    <span class="" style="font-size: 2rem;" >About College</span>
-                    <table class="table">
+              <div class="col" style="overflow: hidden;">
+                <div class="col my-2 mx-2 ">
+                    <div class="color-header" style="font-size: 1.5rem;" ><i class="fas fa-university"></i> About College</div>
+                    <table class="table borderless">
                         <tbody>
                           <tr>
                             <td style="font-weight: bold;">College Code</td>
@@ -197,46 +232,41 @@
                             <td>{{result.minority_status}}</td>
                           </tr>
                           <tr>
-                            <td style="font-weight: bold;">Established Year</td>
+                            <td style="font-weight: bold;">Year Founded</td>
                             <td>{{result.established_year}}</td>
                           </tr>
                         </tbody>
                       </table>
                 </div>
                 <div class="col my-2 mx-2">
-                    <span class="" style="font-size: 2rem;" >Courses Offered</span>
-                    <table class="table">
+                    <div class="color-header" style="font-size: 1.5rem;" ><i class="fas fa-book"></i> Courses Offered</div>
+                    <table class="table borderless">
                         <tbody>
                           <tr>
-                            <td>{{result.course1}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course2}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course3}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course4}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course5}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course6}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course7}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.course8}}</td>
+                            <td >
+                              {{result.course1}} 
+                              <br> 
+                              {{result.course2}}
+                              <br>
+                              {{result.course3}} 
+                              <br> 
+                              {{result.course4}}
+                              <br>
+                              {{result.course5}} 
+                              <br> 
+                              {{result.course6}}
+                              <br>
+                              {{result.course7}} 
+                              <br> 
+                              {{result.course8}}
+                            </td>
                           </tr>
                         </tbody>
                       </table>
                 </div>
                 <div class="col my-2 mx-2">
-                    <span class="" style="font-size: 2rem;" >Courses Info</span>
-                    <table class="table">
+                    <div class="color-header" style="font-size: 1.5rem;" ><i class="fas fa-book-open"></i> Courses Info</div>
+                    <table class="table borderless">
                         <tbody>
                           <tr>
                             <td style="font-weight: bold;">Degree</td>
@@ -254,8 +284,8 @@
                       </table>
                 </div>
                 <div class="col my-2 mx-2">
-                    <span class="" style="font-size: 2rem;" >Accreditation and Approval</span>
-                    <table class="table">
+                    <div class="color-header" style="font-size: 1.5rem;" ><i class="fas fa-award"></i> Accreditation and Approval</div>
+                    <table class="table borderless">
                         <tbody>
                           <tr>
                             <td style="font-weight: bold;">Approved by </td>
@@ -265,35 +295,29 @@
                       </table>
                 </div>
                 <div class="col my-2 mx-2">
-                    <span class="" style="font-size: 2rem;" >Infrastructure</span>
-                    <table class="table">
+                    <div class="color-header" style="font-size: 1.5rem;" ><i class="fa fa-info-circle"></i> Infrastructure</div>
+                    <table class="table borderless">
                         <tbody>
                           <tr>
-                            <td>{{result.infra1}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra2}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra3}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra4}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra5}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra6}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra7}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra8}}</td>
-                          </tr>
-                          <tr>
-                            <td>{{result.infra9}}</td>
+                            <td>
+                              {{result.infra1}}
+                              <br>
+                              {{result.infra2}}
+                              <br>
+                              {{result.infra3}}
+                              <br>
+                              {{result.infra4}}
+                              <br>
+                              {{result.infra5}}
+                              <br>
+                              {{result.infra6}}
+                              <br>
+                              {{result.infra7}}
+                              <br>
+                              {{result.infra8}}
+                              <br>
+                              {{result.infra9}}
+                            </td>
                           </tr>
                         </tbody>
                       </table>

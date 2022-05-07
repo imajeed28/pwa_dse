@@ -114,3 +114,6 @@ def compareresult(request):
         return render(request, 'recommender_system/college_comparison.html',context)
     else:
         return render(request, 'recommender_system/college_comparison.html')
+
+def placement(request):
+    return render(request, 'recommender_system/placement.html')

@@ -1,0 +1,96 @@
+{% extends 'landing/base.html'%}
+
+{% block content %}
+
+<style>
+    th{
+        background-color: #002e3d !important;
+        color: whitesmoke;
+        font-size: 1.35rem;
+    }
+
+    tbody tr td{
+        font-size: 1.15rem;
+    }
+    .bg-span{
+        background-color: #014c64;
+    }
+</style>
+
+
+<div class="d-flex justify-content-between">
+
+    <div class="text mx-2 my-4 " style="color: #002e3d;" >
+      <h1>Colleges Placement Record</h1>
+    </div>
+  
+    <div class="mx-2 my-4 ">
+      <a href="{% url 'college_comparison' %}" class="text-white btn btn-secondary"><i class="fa fa-chart-bar"></i> College Comparison</a>
+    </div>
+</div>
+<div class="mx-5">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-span text-white" id="basic-addon1"><i class="fa fa-search text-white"></i>Search</span>
+        </div>
+        <input type="text" id="search" class="form-control" placeholder="Search College Name... Mention Full Form of College in Caps e.g. VJTI" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <br>
+    <table class="table text-center table-striped">
+     <thead>
+        <tr>
+            <th scope="col">College Name</th>
+            <th scope="col">Placement Statistic File</th>
+        </tr>
+     </thead>   
+    <tbody>
+        <tr>
+            <td>Veermata Jijabai Technological Institute(VJTI) - Mumbai</td>
+            <td><a href="/media/placement/VJTI-Mumbai-Placement-Stats-2020-21.pdf" target="_blank" class="btn btn-primary"><i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>
+        <tr>
+            <td>Sardar Patel Institute of Technology(SPIT) - Mumbai</td>
+            <td><a href="/media/placement/SPIT-Mumbai-Placement-Stats-2020-21.pdf" target="_blank"  class="btn btn-primary"> <i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>
+        <tr>
+            <td>Vidyalankar Institute of Technology(VIT) - Mumbai</td>
+            <td><a href="/media/placement/VIT-Mumbai-Placement-Stats-2020-21.pdf" target="_blank" class="btn btn-primary"><i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>
+        <tr>
+            <td>K. J. Somaiya College of Engineering(KJSCE) - Mumbai</td>
+            <td><a href="/media/placement/KJSCE-Mumbai-Placement-Stats-2020-21.pdf" target="_blank"  class="btn btn-primary"> <i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>
+        <tr>
+            <td>Fr. C. Rodrigues Institute of Technology(FCRIT) - Thane</td>
+            <td><a href="/media/placement/FCRIT-Thane-Placement-Stats-2020-21.pdf" target="_blank"  class="btn btn-primary"> <i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>
+        <tr>
+            <td>Fr. C. Rodrigues College of Engineering(FCRCE) - Mumbai</td>
+            <td><a href="/media/placement/FCRCE-Mumbai-Placement-Stats-2020-21.pdf" target="_blank"  class="btn btn-primary"> <i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>
+        <tr>
+            <td>Thadomal Shahani Engineering College(TSEC) - Mumbai</td>
+            <td><a href="/media/placement/TSEC-Mumbai-Placement-Stats-2020-21.pdf" target="_blank" class="btn btn-primary"> <i class="fa fa-external-link"></i> Placement Stats</a></td>
+        </tr>    
+    </tbody>
+    
+</table>
+<br />
+
+</div>  
+<script type="text/javascript">
+    $("#search").keyup(function() {
+        var value = this.value;
+    
+        $("table").find("tr").each(function(index) {
+            if (index === 0) return;
+            var id = $(this).find("td").first().text();
+            $(this).toggle(id.indexOf(value) !== -1);
+        });
+    });
+    
+</script>
+
+
+
+{% endblock content %}
